@@ -1,37 +1,30 @@
 <template>
-  <h1>Reaction Time App</h1>
-  <button @click="start">Play</button>
-  <Block v-if="isPlaying" />
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </div>
+  <router-view/>
 </template>
-<script>
-import Block from './components/Block.vue'
 
-export default {
-  name: 'App',
-  components: { Block },
-  data() {
-    return {
-      isPlaying: false,
-      delay: null
-    }
-  },
-  methods: {
-    start() {
-      this.delay = 2000 + Math.random() * 5000
-      this.isPlaying = true
-      console.log(this.delay)
-    }
-  }
-}
-</script>
-
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
