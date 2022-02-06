@@ -1,7 +1,13 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Mercury</router-link>
+    <router-link to="/venus">Venus</router-link>
+    <router-link to="/earth">Earth</router-link>
+    <router-link to="/mars">Mars</router-link>
+    <router-link to="/jupiter">Jupiter</router-link>
+    <router-link to="/saturn">Staurn</router-link>
+    <router-link to="/uranus">Uranus</router-link>
+    <router-link to="/neptune">Neptune</router-link>
   </div>
   <router-view/>
 </template>

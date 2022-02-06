@@ -1,9 +1,10 @@
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="mercury">
+    <h1>This is the Vercury Planet page</h1>
   </div>
 </template>
+
 
 <script>
 // @ is an alias to /src
