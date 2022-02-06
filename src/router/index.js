@@ -5,7 +5,7 @@ const routes = [
   {
     path: '/',
     name: 'Mercury',
-    component: Mercury
+    component: () => import(/* webpackChunkName: "Mercury" */ '../views/Mercury.vue')
   },
   {
     path: '/Venus',

@@ -1,19 +1,16 @@
 
 <template>
   <div class="mercury">
-    <h1>This is the Vercury Planet page</h1>
+    <h1>This is the Mercury Planet page</h1>
   </div>
 </template>
 
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'Home',
+  name: 'Mercury',
   components: {
-    HelloWorld
   }
 }
 </script>

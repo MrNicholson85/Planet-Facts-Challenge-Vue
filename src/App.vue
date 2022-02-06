@@ -1,18 +1,26 @@
 <template>
   <div id="nav">
-    <router-link to="/">Mercury</router-link>
-    <router-link to="/venus">Venus</router-link>
-    <router-link to="/earth">Earth</router-link>
-    <router-link to="/mars">Mars</router-link>
-    <router-link to="/jupiter">Jupiter</router-link>
-    <router-link to="/saturn">Staurn</router-link>
-    <router-link to="/uranus">Uranus</router-link>
-    <router-link to="/neptune">Neptune</router-link>
+    <router-link :to="{name: 'Mercury'}">Mercury</router-link>
+    <router-link :to="{ name: 'Venus' }">Venus</router-link>
+    <router-link :to="{ name: 'Earth' }">Earth</router-link>
+    <router-link :to="{ name: 'Mars' }">Mars</router-link>
+    <router-link :to="{ name: 'Jupiter' }">Jupiter</router-link>
+    <router-link :to="{ name: 'Saturn' }">Saturn</router-link>
+    <router-link :to="{ name: 'Uranus' }">Uranus</router-link>
+    <router-link :to="{ name: 'Neptune' }">Neptune</router-link>
   </div>
   <router-view/>
 </template>
 
 <style lang="scss">
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #070724;
+  background-image: url("./assets/stars-bg.png");
+  background-size: cover;
+  background-position: fixed;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
