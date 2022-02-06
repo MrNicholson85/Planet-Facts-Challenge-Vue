@@ -1,67 +1,54 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Mercury from '../views/Mercury.vue'
+import Venus from '../views/Venus.vue'
+import Earth from '../views/earth/Earth.vue'
+import Mars from '../views/Mars.vue'
+import Jupiter from '../views/Jupiter.vue'
+import Saturn from '../views/Saturn.vue'
+import Uranus from '../views/Uranus.vue'
+import Neptune from '../views/Neptune.vue'
+
 
 const routes = [
   {
     path: '/',
     name: 'Mercury',
-    component: () => import(/* webpackChunkName: "Mercury" */ '../views/Mercury.vue')
+    component: Mercury
   },
   {
     path: '/Venus',
     name: 'Venus',
-    // route level code-splitting
-    // this generates a separate chunk (Venus.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Venus" */ '../views/Venus.vue')
+    component: Venus
   },
   {
     path: '/Earth',
     name: 'Earth',
-    // route level code-splitting
-    // this generates a separate chunk (Earth.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Earth" */ '../views/Earth.vue')
+    component: Earth
   },
   {
     path: '/Mars',
     name: 'Mars',
-    // route level code-splitting
-    // this generates a separate chunk (Mars.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Mars" */ '../views/Mars.vue')
+    component: Mars
   },
   {
     path: '/Jupiter',
     name: 'Jupiter',
-    // route level code-splitting
-    // this generates a separate chunk (Jupiter.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Jupiter" */ '../views/Jupiter.vue')
+    component: Jupiter
   },
   {
     path: '/Saturn',
     name: 'Saturn',
-    // route level code-splitting
-    // this generates a separate chunk (Saturn.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Saturn" */ '../views/Saturn.vue')
+    component: Saturn
   },
   {
     path: '/Uranus',
     name: 'Uranus',
-    // route level code-splitting
-    // this generates a separate chunk (Uranus.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Uranus" */ '../views/Uranus.vue')
+    component: Uranus
   },
   {
     path: '/Neptune',
     name: 'Neptune',
-    // route level code-splitting
-    // this generates a separate chunk (Neptune.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Neptune" */ '../views/Neptune.vue')
+    component: Neptune
   }
 ]
 
