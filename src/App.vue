@@ -1,13 +1,16 @@
 <template>
-  <div id="nav">
-    <router-link :to="{name: 'Mercury'}">Mercury</router-link>
-    <router-link :to="{ name: 'Venus' }">Venus</router-link>
-    <router-link :to="{ name: 'Earth' }">Earth</router-link>
-    <router-link :to="{ name: 'Mars' }">Mars</router-link>
-    <router-link :to="{ name: 'Jupiter' }">Jupiter</router-link>
-    <router-link :to="{ name: 'Saturn' }">Saturn</router-link>
-    <router-link :to="{ name: 'Uranus' }">Uranus</router-link>
-    <router-link :to="{ name: 'Neptune' }">Neptune</router-link>
+  <div class="header">
+    <div class="logo">The Planets</div>
+    <div id="nav">
+      <router-link :to="{name: 'Mercury'}">Mercury</router-link>
+      <router-link :to="{ name: 'Venus' }">Venus</router-link>
+      <router-link :to="{ name: 'Earth' }">Earth</router-link>
+      <router-link :to="{ name: 'Mars' }">Mars</router-link>
+      <router-link :to="{ name: 'Jupiter' }">Jupiter</router-link>
+      <router-link :to="{ name: 'Saturn' }">Saturn</router-link>
+      <router-link :to="{ name: 'Uranus' }">Uranus</router-link>
+      <router-link :to="{ name: 'Neptune' }">Neptune</router-link>
+    </div>
   </div>
   <router-view/>
 </template>
@@ -25,24 +28,48 @@ body {
   font-family: 'Spartan', sans-serif;
   font-size: 14px;
   line-height: 25px;
-}
-#app {
-  font-family: 'Antonio', sans-serif;;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
+  #app {
+    font-family: 'Antonio', sans-serif;;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
     color: #2c3e50;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      text-transform: uppercase;
+      color: white;
+      font-size:  28px;
+    }
+    
+    #nav {
+      padding: 30px;
+      font-family: 'Spartan', sans-serif;
+      text-transform: uppercase;
+      display: flex;
+      gap: 33px;
+
+      a {
+        font-weight: bold;
+        color: white;
+        font-size: 11px;
+        line-height: 25px;
+        letter-spacing: 1px;
+        text-decoration: none;
+
+        &.router-link-exact-active {
+          color: #b6b6b6;
+        }
+      }
     }
   }
 }
