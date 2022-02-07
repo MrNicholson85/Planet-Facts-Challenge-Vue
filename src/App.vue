@@ -1,18 +1,22 @@
 <template>
-  <div class="header">
-    <div class="logo">The Planets</div>
-    <div id="nav">
-      <router-link :to="{name: 'Mercury'}">Mercury</router-link>
-      <router-link :to="{ name: 'Venus' }">Venus</router-link>
-      <router-link :to="{ name: 'Earth' }">Earth</router-link>
-      <router-link :to="{ name: 'Mars' }">Mars</router-link>
-      <router-link :to="{ name: 'Jupiter' }">Jupiter</router-link>
-      <router-link :to="{ name: 'Saturn' }">Saturn</router-link>
-      <router-link :to="{ name: 'Uranus' }">Uranus</router-link>
-      <router-link :to="{ name: 'Neptune' }">Neptune</router-link>
+  <div class="container--full">
+    <div class="header">
+      <div class="logo">The Planets</div>
+      <div id="nav">
+        <router-link :to="{name: 'Mercury'}">Mercury</router-link>
+        <router-link :to="{ name: 'Venus' }">Venus</router-link>
+        <router-link :to="{ name: 'Earth' }">Earth</router-link>
+        <router-link :to="{ name: 'Mars' }">Mars</router-link>
+        <router-link :to="{ name: 'Jupiter' }">Jupiter</router-link>
+        <router-link :to="{ name: 'Saturn' }">Saturn</router-link>
+        <router-link :to="{ name: 'Uranus' }">Uranus</router-link>
+        <router-link :to="{ name: 'Neptune' }">Neptune</router-link>
+      </div>
     </div>
   </div>
-  <router-view/>
+  <div class="container">
+    <router-view/>
+  </div>
 </template>
 
 <style lang="scss">
@@ -29,21 +33,33 @@ body {
   font-size: 14px;
   line-height: 25px;
 
+  .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+
+    &--full {
+      max-width: 100%;
+      width: 100%;
+      border-bottom: solid 1px #979797
+    }
+  }
+
   #app {
     font-family: 'Antonio', sans-serif;;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
   }
 
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
 
     .logo {
       text-transform: uppercase;
@@ -52,7 +68,7 @@ body {
     }
     
     #nav {
-      padding: 30px;
+      padding: 30px 0;
       font-family: 'Spartan', sans-serif;
       text-transform: uppercase;
       display: flex;

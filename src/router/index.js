@@ -7,6 +7,7 @@ import Jupiter from '../views/Jupiter.vue'
 import Saturn from '../views/Saturn.vue'
 import Uranus from '../views/Uranus.vue'
 import Neptune from '../views/Neptune.vue'
+import FourOhFour from '../views/fourohfour.vue'
 
 
 const routes = [
@@ -49,6 +50,12 @@ const routes = [
     path: '/Neptune',
     name: 'Neptune',
     component: Neptune
+  },
+  // catchall 404
+  {
+    path: '/:catchAll(.*)',
+    name: 'FoutOhFour',
+    component: FourOhFour
   }
 ]
 
