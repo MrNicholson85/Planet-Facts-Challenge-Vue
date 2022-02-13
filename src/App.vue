@@ -11,29 +11,39 @@
             </g>
           </svg>
         </div>
-        <div id="nav">
-          <router-link :to="{name: 'Mercury'}">Mercury</router-link>
-          <router-link :to="{ name: 'Venus' }">Venus</router-link>
-          <router-link :to="{ name: 'Earth' }">Earth</router-link>
-          <router-link :to="{ name: 'Mars' }">Mars</router-link>
-          <router-link :to="{ name: 'Jupiter' }">Jupiter</router-link>
-          <router-link :to="{ name: 'Saturn' }">Saturn</router-link>
-          <router-link :to="{ name: 'Uranus' }">Uranus</router-link>
-          <router-link :to="{ name: 'Neptune' }">Neptune</router-link>
+        <div id="nav" class="nav">
+          <router-link :to="{name: 'Mercury'}" class="mercury">Mercury</router-link>
+          <router-link :to="{ name: 'Venus' }" class="venus">Venus</router-link>
+          <router-link :to="{ name: 'Earth' }" class="earth">Earth</router-link>
+          <router-link :to="{ name: 'Mars' }" class="mars">Mars</router-link>
+          <router-link :to="{ name: 'Jupiter' }" class="jupiter">Jupiter</router-link>
+          <router-link :to="{ name: 'Saturn' }" class="saturn">Saturn</router-link>
+          <router-link :to="{ name: 'Uranus' }" class="uranus"> Uranus</router-link>
+          <router-link :to="{ name: 'Neptune' }" class="neptune">Neptune</router-link>
         </div>
       </div>
     </div>
     <div class="container">
-        <router-view/>
-      </div>
+      <router-view/>
+    </div>
   </div>
 </template>
+
+<script>
+ export default {
+   name: 'App',
+   methods: {
+     
+   }
+ }
+</script>
+
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@500&family=Spartan:wght@400;700&display=swap');
 
 /* Using SCSS variables to store breakpoints */
-$breakpoint-mobile: 375px;
+$breakpoint-mobile: 425px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1440px;
 
@@ -84,7 +94,6 @@ body {
     text-align: left;
 
     @media (min-width: $breakpoint-tablet) {
-      display: flex;
       justify-content: space-between;
       align-items: center;
       max-width: 1440px;
@@ -92,18 +101,32 @@ body {
       margin: 0 auto;
     }
 
+    @media (min-width: $breakpoint-desktop) {
+      display: flex;
+    }
+
     .logo {
       text-transform: uppercase;
       color: white;
       font-size:  28px;
       padding: 16px 24px;
-      border-bottom: #979797 solid 1px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: #979797 solid 1px;
 
       @media (min-width: $breakpoint-tablet) {
-        padding-top: 0;
+        padding: 36px 24px 0;
+        border: none;
+        display: block;
+        width: 120px;
+        margin: 0 auto;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        display: flex;
+        padding: 16px 24px;
+        margin: 0;
       }
 
       .only-mobile{
@@ -120,7 +143,7 @@ body {
       }
     }
     
-    #nav {
+    .nav {
       padding: 30px 24px;
       font-family: 'Spartan', sans-serif;
       text-transform: uppercase;
@@ -128,36 +151,20 @@ body {
 
       @media (min-width: $breakpoint-tablet) {
         display: flex;
+        justify-content: space-between;
         gap: 33px;
       }
 
       a {
         font-weight: bold;
         color: white;
-        font-size: 15px;
+        font-size: 11px;
         line-height: 25px;
         letter-spacing: 1px;
         text-decoration: none;
-        border-bottom: 1px solid #979797;
-        padding: 30px 0;
         position: relative;
         display: flex;
         align-items: center;
-
-        @media (min-width: $breakpoint-tablet) {
-
-        }
-
-        &::before {
-          content: '';
-          height: 15px;
-          width: 15px;
-          border-radius: 50%;
-          background-color: blue;
-          top: -3px;
-          margin-right: 20px;
-          position: relative;
-        }
 
         &::after {
           content: '';
@@ -171,6 +178,77 @@ body {
 
         &.router-link-exact-active {
           color: #b6b6b6;
+        }
+
+        @media (max-width: $breakpoint-mobile) {
+          border-bottom: 1px solid #979797;
+          padding: 30px 0;
+
+          &::before {
+            content: '';
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            top: -3px;
+            margin-right: 20px;
+            position: relative;
+          }
+
+          &.mercury {
+          &::before {
+              content: '';
+              background-color: #DEF4FC;
+            }
+          }
+
+          &.venus {
+            &::before {
+              content: '';
+              background-color: #F7CC7F;
+            }
+          }
+
+          &.earth {
+            &::before {
+              content: '';
+              background-color: #545BFE;
+            }
+          }
+
+          &.mars {
+            &::before {
+              content: '';
+              background-color: #FF6A45;
+            }
+          }
+
+          &.jupiter {
+            &::before {
+              content: '';
+              background-color: #ECAD7A;
+            }
+          }
+
+          &.saturn {
+            &::before {
+              content: '';
+              background-color: #FCCB6B;
+            }
+          }
+
+          &.uranus {
+            &::before {
+              content: '';
+              background-color: #65F0D5;
+            }
+          }
+
+          &.neptune {
+            &::before {
+              content: '';
+              background-color: #497EFA;
+            }
+          }
         }
       }
     }
