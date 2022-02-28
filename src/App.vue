@@ -68,7 +68,7 @@ body {
     }
 
     @media (min-width: $breakpoint-desktop) {
-      max-width: $breakpoint-desktop;
+      max-width: 1110px;
     }
 
     &--full {
