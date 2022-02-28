@@ -1,6 +1,5 @@
 {
-  "Mercury": [
-    {
+  "Mercury": {
       "name": "Mercury",
       "id": 1,
       "overview": {
@@ -24,8 +23,7 @@
         "internal": "./assets/planet-mercury-internal.svg",
         "geology": "./assets/geology-mercury.png"
       }
-    }
-  ],
+    },
   "planets": [
     {
       "name": "Mercury",

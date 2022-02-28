@@ -1,22 +1,31 @@
 <template>
   <div v-if="murcuryData" class="mercury">
     <div class="mercury__image">
-      <img :src="murcuryData[0].images.internal" />
-      <img :src="murcuryData[0].images.geology" />
+      <img :src="internalImg" />
+      <img :src="gioImg" />
+      <img :src="mercuryImg" />
     </div>
     <div class="mercury__content">
-      <h1>{{ murcuryData[0].name }}</h1>
-      <p>{{ murcuryData[0].overview.content }}</p>
+      <h1>{{ murcuryData.name }}</h1>
+      <p>{{ murcuryData.overview.content }}</p>
     </div>
     </div>
 </template>
 
 
 <script>
+import internalImg from "../assets/planet-mercury-internal.svg"
+import gioImg from "../assets/geology-mercury.png"
+import mercuryImg from '../assets/planet-mercury.svg'
+
 export default {
   data() {
     return {
-      murcuryData: null
+      murcuryData: null,
+      internalImg,
+      gioImg,
+      mercuryImg
+
     }
   },
   mounted() {
