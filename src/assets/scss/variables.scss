@@ -1,0 +1,29 @@
+/// Font
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@500&family=Spartan:wght@400;700&display=swap');
+
+$antonio: 'Antonio', sans-serif;
+$spartan: 'Spartan', sans-serif;
+
+/// Colors
+
+// planet colors
+$mercury: #419EBB;
+$venus: #F7CC7F;
+$earth: #545BFE;
+$mars: #FF6A45;
+$jupiter: #ECAD7A;
+$saturn: #FCCB6B;
+$uranus: #65F0D5;
+$neptuner: #497EFA;
+
+// Site Colors
+$white: #fff;
+$black: #070707;
+$dark-gray: #38384F;
+$light-gray: #838391;
+
+/// Breakpoints
+/* Using SCSS variables to store breakpoints */
+$breakpoint-mobile: 425px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1440px;

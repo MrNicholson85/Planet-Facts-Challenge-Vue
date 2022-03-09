@@ -1,0 +1,54 @@
+@import '../scss/variables.scss';
+
+.planet {
+  display: grid;
+  grid-template-columns: 760px 350px;
+  margin-top: 126px;
+  align-items: center;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__source {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    color: $white;
+    font-family: $spartan;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+
+    a {
+      color: $white;
+      font-size: 14px;
+      font-weight: 800;
+    }
+  }
+
+  &__specBtns{
+    margin-top: 39px;
+
+    button {
+      display: flex;
+      width: 100%;
+      color: $white;
+      background-color: transparent;
+      border: $white 1px solid;
+      font-family: $spartan;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 25px;
+      letter-spacing: 2.57px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding: 12px 0;
+  
+      span {
+        margin: 0 26px;
+      }
+    }
+  }
+}
