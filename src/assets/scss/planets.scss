@@ -2,10 +2,14 @@
 
 .planet {
   &__info-container {
-    display: grid;
-    grid-template-columns: 760px 350px;
+    display: block;
     margin-top: 126px;
     align-items: center;
+
+    @media (min-width: $breakpoint-desktop) {
+      display: grid;
+      grid-template-columns: 760px 350px;
+    }
   }
 
   &__image {
@@ -33,6 +37,7 @@
       height: 128px;
       align-content: center;
       padding-left: 23px;
+      text-transform: uppercase;
 
       div {
         color: rgba($white, 0.5);

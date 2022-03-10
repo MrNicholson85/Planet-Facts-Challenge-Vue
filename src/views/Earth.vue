@@ -1,24 +1,24 @@
 <template>
-  <div v-if="mercuryData" class="planet mercury">
+  <div v-if="earthData" class="planet earth">
     <div class="planet__info-container">
       <div class="planet__image">
         <img v-if="internalActive" class="planet__image-internal" :src="internalImg" />
         <img v-if="gioActive" class="planet__image-gio" :src="gioImg" />
-        <img v-if="overviewActive || gioActive" class="planet__image-overview" :src="planetImage" />
+        <img v-if="overviewActive || gioActive" class="planet__image-overview" :src="planetImg" />
       </div>
       <div class="planet__content">
-          <h1>{{ mercuryData.name }}</h1>
+          <h1>{{ earthData.name }}</h1>
         <div v-if="overviewActive">
-          <p>{{ mercuryData.overview.content }}</p>
+          <p>{{ earthData.overview.content }}</p>
         </div>
         <div v-if="internalActive">
-          <p>{{ mercuryData.structure.content }}</p>
+          <p>{{ earthData.structure.content }}</p>
         </div>
         <div v-if="gioActive">
-          <p>{{ mercuryData.geology.content }}</p>
+          <p>{{ earthData.geology.content }}</p>
         </div>
         <div class="planet__source">
-          source: <a :href="mercuryData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
+          source: <a :href="earthData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
         </div>
         <div class="planet__specBtns">
           <button @click="overviewToggle" :class="[overviewActive ? 'active' : '']"><span>01</span>Overview</button>
@@ -30,19 +30,19 @@
     <div class="planet__specs">
       <div class="planet__specs-card">
         <div>ROTATION TIME</div>
-        <span>{{ mercuryData.rotation }}</span>
+        <span>{{ earthData.rotation }}</span>
       </div>
       <div class="planet__specs-card">
         <div>REVOLUTION TIME</div>
-        <span>{{ mercuryData.revolution }}</span>
+        <span>{{ earthData.revolution }}</span>
       </div>
-       <div class="planet__specs-card">
+      <div class="planet__specs-card">
         <div>radius</div>
-        <span>{{ mercuryData.radius }}</span>
+        <span>{{ earthData.radius }}</span>
       </div>
       <div class="planet__specs-card">
         <div>AVERAGE TEMP.</div>
-        <span>{{ mercuryData.temperature }}</span>
+        <span>{{ earthData.temperature }}</span>
       </div>
     </div>
   </div>
@@ -50,18 +50,18 @@
 
 
 <script>
-import internalImg from "../assets/images/planet-mercury-internal.svg"
-import gioImg from "../assets/images/geology-mercury.png"
-import planetImage from '../assets/images/planet-mercury.svg'
+import internalImg from "../assets/images/planet-earth-internal.svg"
+import gioImg from "../assets/images/geology-earth.png"
+import planetImg from '../assets/images/planet-earth.svg'
 import sourceIcon from '../assets/images/icon-source.svg'
 
 export default {
   data() {
     return {
-      mercuryData: null,
+      earthData: null,
       internalImg,
       gioImg,
-      planetImage,
+      planetImg,
       sourceIcon,
       overviewActive: true,
       internalActive: false,
@@ -86,9 +86,9 @@ export default {
     }
   },
   mounted() {
-    fetch('http://localhost:3000/Mercury')
+    fetch('http://localhost:3000/earth')
       .then(res => res.json())
-      .then(data => this.mercuryData = data)
+      .then(data => this.earthData = data)
       .catch(err => console.log(err.message))
   }
 }
@@ -97,11 +97,11 @@ export default {
 <style lang="scss">
 @import '../assets/scss/variables.scss';
 
-.mercury {
+.earth {
   button {
     &.active {
-      background-color: $mercury;
-      border-color: $mercury;
+      background-color: $earth;
+      border-color: $earth;
     }
   }
 }

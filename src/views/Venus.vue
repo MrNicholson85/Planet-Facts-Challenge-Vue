@@ -1,30 +1,24 @@
 <template>
-  <div v-if="venusData" class="planet mercury">
+  <div v-if="venusData" class="planet venus">
     <div class="planet__info-container">
       <div class="planet__image">
         <img v-if="internalActive" class="planet__image-internal" :src="internalImg" />
         <img v-if="gioActive" class="planet__image-gio" :src="gioImg" />
-        <img v-if="overviewActive || gioActive" class="planet__image-overview" :src="mercuryImg" />
+        <img v-if="overviewActive || gioActive" class="planet__image-overview" :src="planetImg" />
       </div>
       <div class="planet__content">
           <h1>{{ venusData.name }}</h1>
         <div v-if="overviewActive">
           <p>{{ venusData.overview.content }}</p>
-          <div class="planet__source">
-            source: <a href="">Wikipedia <img :src="sourceIcon"></a>
-          </div>
         </div>
         <div v-if="internalActive">
           <p>{{ venusData.structure.content }}</p>
-          <div class="planet__source">
-            source: <a href="">Wikipedia <img :src="sourceIcon"></a>
-          </div>
         </div>
         <div v-if="gioActive">
           <p>{{ venusData.geology.content }}</p>
-          <div class="planet__source">
-            source: <a href="">Wikipedia <img :src="sourceIcon"></a>
-          </div>
+        </div>
+        <div class="planet__source">
+          source: <a :href="venusData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
         </div>
         <div class="planet__specBtns">
           <button @click="overviewToggle" :class="[overviewActive ? 'active' : '']"><span>01</span>Overview</button>
@@ -43,12 +37,12 @@
         <span>{{ venusData.revolution }}</span>
       </div>
       <div class="planet__specs-card">
-        <div>AVERAGE TEMP.</div>
-        <span>{{ venusData.temperature }}</span>
+        <div>RADIUS</div>
+        <span>{{ venusData.radius }}</span>
       </div>
       <div class="planet__specs-card">
-        <div>ROTATION TIME</div>
-        <span>{{ venusData.rotation }}</span>
+        <div>AVERAGE TEMP.</div>
+        <span>{{ venusData.temperature }}</span>
       </div>
     </div>
   </div>
@@ -58,7 +52,7 @@
 <script>
 import internalImg from "../assets/images/planet-venus-internal.svg"
 import gioImg from "../assets/images/geology-venus.png"
-import mercuryImg from '../assets/images/planet-venus.svg'
+import planetImg from '../assets/images/planet-venus.svg'
 import sourceIcon from '../assets/images/icon-source.svg'
 
 export default {
@@ -67,7 +61,7 @@ export default {
       venusData: null,
       internalImg,
       gioImg,
-      mercuryImg,
+      planetImg,
       sourceIcon,
       overviewActive: true,
       internalActive: false,
@@ -103,7 +97,7 @@ export default {
 <style lang="scss">
 @import '../assets/scss/variables.scss';
 
-.planet {
+.venus {
   button {
     &.active {
       background-color: $venus;

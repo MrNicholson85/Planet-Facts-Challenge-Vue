@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Mercury from '../views/Mercury.vue'
 import Venus from '../views/Venus.vue'
-import Earth from '../views/earth/Earth.vue'
+import Earth from '../views/Earth.vue'
 import Mars from '../views/Mars.vue'
 import Jupiter from '../views/Jupiter.vue'
 import Saturn from '../views/Saturn.vue'
