@@ -105,10 +105,6 @@ export default {
 
 .planet {
   button {
-    &:hover {
-      background-color: #d8d8d82f;
-    }
-
     &.active {
       background-color: $mercury;
       border-color: $mercury;
