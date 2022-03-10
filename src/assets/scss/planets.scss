@@ -1,10 +1,57 @@
 @import '../scss/variables.scss';
 
 .planet {
-  display: grid;
-  grid-template-columns: 760px 350px;
-  margin-top: 126px;
-  align-items: center;
+  &__info-container {
+    display: grid;
+    grid-template-columns: 760px 350px;
+    margin-top: 126px;
+    align-items: center;
+  }
+
+  &__image {
+    position: relative;
+
+    &-gio {
+      position: absolute;
+      width: 163px;
+      height: 199px;
+      bottom: -136px;
+    }
+  }
+
+  &__specs {
+    margin-top: 87px;
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: 255px 255px 255px 255px;
+    column-gap: 30px;
+    align-content: center;
+
+    &-card {
+      display: grid;
+      border: solid $white 1px;
+      height: 128px;
+      align-content: center;
+      padding-left: 23px;
+
+      div {
+        color: rgba($white, 0.5);
+        font-size: 11px;
+        font-weight: bold;
+        font-family: $spartan;
+        letter-spacing: 1px;
+      }
+
+      span {
+        font-family: $antonio;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: -1.5px;
+        font-weight: 400;
+        color: $white;
+      }
+    }
+  }
 
   &__image {
     display: flex;
