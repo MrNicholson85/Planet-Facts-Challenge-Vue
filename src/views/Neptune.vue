@@ -1,5 +1,108 @@
 <template>
-  <div class="neptune">
-    <h1>This is the Neptune Planet page</h1>
+  <div v-if="neptuneData" class="planet neptune">
+    <div class="planet__info-container">
+      <div class="planet__image">
+        <img v-if="internalActive" class="planet__image-internal" :src="internalImg" />
+        <img v-if="gioActive" class="planet__image-gio" :src="gioImg" />
+        <img v-if="overviewActive || gioActive" class="planet__image-overview" :src="planetImage" />
+      </div>
+      <div class="planet__content">
+          <h1>{{ neptuneData.name }}</h1>
+        <div v-if="overviewActive">
+          <p>{{ neptuneData.overview.content }}</p>
+        </div>
+        <div v-if="internalActive">
+          <p>{{ neptuneData.structure.content }}</p>
+        </div>
+        <div v-if="gioActive">
+          <p>{{ neptuneData.geology.content }}</p>
+        </div>
+        <div class="planet__source">
+          source: <a :href="neptuneData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
+        </div>
+        <div class="planet__specBtns">
+          <button @click="overviewToggle" :class="[overviewActive ? 'active' : '']"><span>01</span>Overview</button>
+          <button @click="internalToggle" :class="[internalActive ? 'active' : '']"><span>02</span>Internal Structure</button>
+          <button @click="gioToggle" :class="[gioActive ? 'active' : '']"><span>03</span>Surface Geology</button>
+        </div>
+      </div>
+    </div>
+    <div class="planet__specs">
+      <div class="planet__specs-card">
+        <div>ROTATION TIME</div>
+        <span>{{ neptuneData.rotation }}</span>
+      </div>
+      <div class="planet__specs-card">
+        <div>REVOLUTION TIME</div>
+        <span>{{ neptuneData.revolution }}</span>
+      </div>
+       <div class="planet__specs-card">
+        <div>radius</div>
+        <span>{{ neptuneData.radius }}</span>
+      </div>
+      <div class="planet__specs-card">
+        <div>AVERAGE TEMP.</div>
+        <span>{{ neptuneData.temperature }}</span>
+      </div>
+    </div>
   </div>
 </template>
+
+
+<script>
+import internalImg from "../assets/images/planet-neptune-internal.svg"
+import gioImg from "../assets/images/geology-neptune.png"
+import planetImage from '../assets/images/planet-neptune.svg'
+import sourceIcon from '../assets/images/icon-source.svg'
+
+export default {
+  data() {
+    return {
+      neptuneData: null,
+      internalImg,
+      gioImg,
+      planetImage,
+      sourceIcon,
+      overviewActive: true,
+      internalActive: false,
+      gioActive: false,
+    }
+  },
+  methods: {
+    overviewToggle() {
+      this.overviewActive = true;
+      this.internalActive = false;
+      this.gioActive = false;
+    },
+    internalToggle() {
+      this.internalActive = true;
+      this.overviewActive = false;
+      this.gioActive = false;
+    },
+    gioToggle() {
+      this.internalActive = false;
+      this.overviewActive = false;
+      this.gioActive = true;
+    }
+  },
+  mounted() {
+    fetch('http://localhost:3000/neptune')
+      .then(res => res.json())
+      .then(data => this.neptuneData = data)
+      .catch(err => console.log(err.message))
+  }
+}
+</script>
+
+<style lang="scss">
+@import '../assets/scss/variables.scss';
+
+.neptune {
+  button {
+    &.active {
+      background-color: $neptune;
+      border-color: $neptune;
+    }
+  }
+}
+</style>

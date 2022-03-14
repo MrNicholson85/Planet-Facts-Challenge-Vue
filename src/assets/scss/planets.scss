@@ -1,6 +1,8 @@
 @import '../scss/variables.scss';
 
 .planet {
+  padding: 0 25px;
+
   &__info-container {
     display: block;
     margin-top: 126px;
@@ -14,6 +16,8 @@
 
   &__image {
     position: relative;
+    display: flex;
+    justify-content: center;
 
     &-gio {
       position: absolute;
@@ -27,40 +31,57 @@
     margin-top: 87px;
     margin-bottom: 56px;
     display: grid;
-    grid-template-columns: 255px 255px 255px 255px;
-    column-gap: 30px;
     align-content: center;
+    grid-template-columns: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(4, 171px);
+      column-gap: 11px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-template-columns: repeat(4, 255px);
+      column-gap: 30px;
+    }
 
     &-card {
       display: grid;
       border: solid $white 1px;
-      height: 128px;
+      height: 88px;
       align-content: center;
       padding-left: 23px;
       text-transform: uppercase;
 
+      @media (min-width: $breakpoint-desktop) {
+        height: 128px;
+      }
+
       div {
         color: rgba($white, 0.5);
-        font-size: 11px;
+        font-size: 8px;
         font-weight: bold;
         font-family: $spartan;
         letter-spacing: 1px;
+
+        @media (min-width: $breakpoint-desktop) {
+          font-size: 11px;
+        }
       }
 
       span {
         font-family: $antonio;
-        font-size: 40px;
+        font-size: 24px;
         line-height: 50px;
-        letter-spacing: -1.5px;
+        letter-spacing: -.9px;
         font-weight: 400;
         color: $white;
+
+        @media (min-width: $breakpoint-desktop) {
+          font-size: 40px;
+          letter-spacing: -1.5px;
+        }
       }
     }
-  }
-
-  &__image {
-    display: flex;
-    justify-content: center;
   }
 
   &__source {
@@ -91,15 +112,53 @@
       border: $white 1px solid;
       font-family: $spartan;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 9px;
       line-height: 25px;
       letter-spacing: 2.57px;
       text-transform: uppercase;
       margin-bottom: 16px;
       padding: 12px 0;
+
+      @media (min-width: $breakpoint-tablet) {
+        font-size: 9px;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        font-size: 14px;
+      }
   
       span {
         margin: 0 26px;
+      }
+    }
+  }
+
+  &__content {
+    &-grid {
+      margin-top: 137px;
+      display: grid;
+      grid-template-columns: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      @media (min-width: $breakpoint-tablet) {
+        display: grid;
+        grid-template-columns: 339px 281px;
+        justify-content: space-between;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin-top: 0;
+      }
+
+      p {
+        font-size: 11px;
+        line-height: 22px;
+        font-family: $spartan;
+
+        @media (min-width: $breakpoint-desktop) {
+          font-size: 14px;
+        }
       }
     }
   }
