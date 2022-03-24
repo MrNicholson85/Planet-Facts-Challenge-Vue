@@ -1,5 +1,10 @@
 <template>
   <div v-if="marsData" class="planet mars">
+    <div class="planet__mobileSpecBtns">
+      <a @click="overviewToggle" :class="[overviewActive ? 'active' : '']">Overview</a>
+      <a @click="internalToggle" :class="[internalActive ? 'active' : '']">Structure</a>
+      <a @click="gioToggle" :class="[gioActive ? 'active' : '']">Surface</a>
+    </div>
     <div class="planet__info-container">
       <div class="planet__image">
         <img v-if="internalActive" class="planet__image-internal" :src="internalImg" />
@@ -8,15 +13,15 @@
       </div>
       <div class="planet__content">
         <div class="planet__content-grid">
-          <div class="">
+          <div class="planet__content-info">
             <h1>{{ marsData.name }}</h1>
-            <div v-if="overviewActive">
+            <div class="planet__content-info" v-if="overviewActive">
               <p>{{ marsData.overview.content }}</p>
             </div>
-            <div v-if="internalActive">
+            <div class="planet__content-info" v-if="internalActive">
               <p>{{ marsData.structure.content }}</p>
             </div>
-            <div v-if="gioActive">
+            <div class="planet__content-info" v-if="gioActive">
               <p>{{ marsData.geology.content }}</p>
             </div>
             <div class="planet__source">
@@ -106,6 +111,12 @@ export default {
     &.active {
       background-color: $mars;
       border-color: $mars;
+    }
+  }
+
+  .planet__mobileSpecBtns {
+    .active {
+      border-bottom: $mars 4px solid;
     }
   }
 }
