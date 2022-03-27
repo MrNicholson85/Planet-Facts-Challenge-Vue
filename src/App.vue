@@ -3,7 +3,7 @@
     <div class="container--full">
       <div class="header">
         <div class="logo">The Planets
-          <svg class="only-mobile" width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg @click="navToggle = !navToggle" class="only-mobile" width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="1">
               <rect width="24" height="3" fill="white"/>
               <rect y="7" width="24" height="3" fill="white"/>
@@ -11,7 +11,7 @@
             </g>
           </svg>
         </div>
-        <div id="nav" class="nav">
+        <div id="nav" class="nav"  :class="[navToggle ? 'nav--nav-close' : 'nav--nav-open']">
           <router-link :to="{ name: 'Mercury' }" class="mercury">Mercury</router-link>
           <router-link :to="{ name: 'Venus' }" class="venus">Venus</router-link>
           <router-link :to="{ name: 'Earth' }" class="earth">Earth</router-link>
@@ -38,16 +38,14 @@ import variables from './assets/scss/variables.scss';
 
 export default {
    name: 'App',
-   methods: {
-     
-   },
    data () {
      return {
        planetStyles,
        typography,
        globalStyles,
-       variables
+       variables,
+       navToggle: true,
      }
-   }
+   },
  }
 </script>

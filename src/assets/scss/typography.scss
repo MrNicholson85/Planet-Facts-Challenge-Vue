@@ -1,12 +1,17 @@
 @import './variables.scss';
 
 h1 {
-  font-size: $antonio;
-  font-size: 80px;
-  font-weight: 400px;
+  font-family: $antonio;
+  font-size: 40px;
+  font-weight: 300;
   color: $white;
   text-transform: uppercase;
   text-align: left;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 80px;
+    font-weight: 400px;
+  }
 }
 
 h2 {

@@ -117,11 +117,18 @@
     display: flex;
     align-items: center;
     align-content: center;
+    justify-content: center;
     color: $white;
     font-family: $spartan;
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
+    padding-top: 20px;
+
+    @media (min-width: $breakpoint-tablet) {
+      justify-content: left;
+      padding-top: 0;
+    }
 
     a {
       color: $white;
@@ -141,10 +148,14 @@
     font-size: 9px;
     border-bottom: $light-gray solid 1px;
 
-    .active {
-      padding-bottom: 20px;
+    a {
+      padding-top: 15px;
+      &.active {
+      padding-bottom: 10px;
       border-bottom: transparent 2px solid;
     }
+    }
+    
 
     @media (min-width: $breakpoint-tablet) {
       display: none;
@@ -157,7 +168,6 @@
     }
 
     button {
-      display: flex;
       width: 100%;
       color: $white;
       background-color: transparent;
@@ -172,7 +182,7 @@
       display: none;
 
       @media (min-width: $breakpoint-tablet) {
-        display: block;
+        display: flex;
         font-size: 9px;
         padding: 12px 0;
       }
@@ -189,7 +199,7 @@
 
   &__content {
     &-grid {
-      margin-top: 137px;
+      margin-top: 75px;
       display: grid;
       justify-content: space-between;
       align-items: center;
@@ -200,6 +210,7 @@
         display: grid;
         justify-content: space-between;
         grid-template-columns: 339px 281px;
+        margin-top: 137px;
       }
 
       @media (min-width: $breakpoint-desktop) {
@@ -222,6 +233,10 @@
       h1,
       p {
         text-align: center;
+
+        @media (min-width: $breakpoint-tablet) {
+          text-align: left;
+        }
       }
     }
   }
