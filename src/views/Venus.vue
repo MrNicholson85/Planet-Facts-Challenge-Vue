@@ -1,5 +1,10 @@
 <template>
   <div v-if="venusData" class="planet venus">
+    <div class="planet__mobileSpecBtns">
+      <a @click="overviewToggle" :class="[overviewActive ? 'active' : '']">Overview</a>
+      <a @click="internalToggle" :class="[internalActive ? 'active' : '']">Structure</a>
+      <a @click="gioToggle" :class="[gioActive ? 'active' : '']">Surface</a>
+    </div>
     <div class="planet__info-container">
       <div class="planet__image">
         <img v-if="internalActive" class="planet__image-internal" :src="internalImg" />
@@ -7,23 +12,27 @@
         <img v-if="overviewActive || gioActive" class="planet__image-overview" :src="planetImg" />
       </div>
       <div class="planet__content">
-          <h1>{{ venusData.name }}</h1>
-        <div v-if="overviewActive">
-          <p>{{ venusData.overview.content }}</p>
-        </div>
-        <div v-if="internalActive">
-          <p>{{ venusData.structure.content }}</p>
-        </div>
-        <div v-if="gioActive">
-          <p>{{ venusData.geology.content }}</p>
-        </div>
-        <div class="planet__source">
-          source: <a :href="venusData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
-        </div>
-        <div class="planet__specBtns">
-          <button @click="overviewToggle" :class="[overviewActive ? 'active' : '']"><span>01</span>Overview</button>
-          <button @click="internalToggle" :class="[internalActive ? 'active' : '']"><span>02</span>Internal Structure</button>
-          <button @click="gioToggle" :class="[gioActive ? 'active' : '']"><span>03</span>Surface Geology</button>
+        <div class="planet__content-grid">
+          <div class="planet__content-info">
+            <h1>{{ venusData.name }}</h1>
+            <div class="planet__content-info" v-if="overviewActive">
+              <p>{{ venusData.overview.content }}</p>
+            </div>
+            <div class="planet__content-info" v-if="internalActive">
+              <p>{{ venusData.structure.content }}</p>
+            </div>
+            <div class="planet__content-info" v-if="gioActive">
+              <p>{{ venusData.geology.content }}</p>
+            </div>
+            <div class="planet__source">
+              source: <a :href="venusData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
+            </div>
+          </div>
+          <div class="planet__specBtns">
+            <button @click="overviewToggle" :class="[overviewActive ? 'active' : '']"><span>01</span>Overview</button>
+            <button @click="internalToggle" :class="[internalActive ? 'active' : '']"><span>02</span>Internal Structure</button>
+            <button @click="gioToggle" :class="[gioActive ? 'active' : '']"><span>03</span>Surface Geology</button>
+          </div>
         </div>
       </div>
     </div>
@@ -37,7 +46,7 @@
         <span>{{ venusData.revolution }}</span>
       </div>
       <div class="planet__specs-card">
-        <div>RADIUS</div>
+        <div>radius</div>
         <span>{{ venusData.radius }}</span>
       </div>
       <div class="planet__specs-card">
@@ -86,7 +95,7 @@ export default {
     }
   },
   mounted() {
-    fetch('http://localhost:3000/Venus')
+    fetch('http://localhost:3000/venus')
       .then(res => res.json())
       .then(data => this.venusData = data)
       .catch(err => console.log(err.message))
@@ -102,6 +111,26 @@ export default {
     &.active {
       background-color: $venus;
       border-color: $venus;
+    }
+  }
+
+  .planet__image {
+    &-overview,
+    &-internal {
+      width: 400px;
+      height: 400px;
+    }
+
+    &-gio {
+      width: 163px;
+      height: 199px;
+      bottom: -79px;
+    }
+  }
+
+  .planet__mobileSpecBtns {
+    .active {
+      border-bottom: $venus 4px solid;
     }
   }
 }
