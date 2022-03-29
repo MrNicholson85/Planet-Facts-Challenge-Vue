@@ -117,8 +117,8 @@ export default {
   .planet__image {
     &-overview,
     &-internal {
-      width: 582px;
-      height: 582px;
+      width: 100%;
+      height: 100%;
     }
 
     &-gio {
