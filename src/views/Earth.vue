@@ -95,7 +95,7 @@ export default {
     }
   },
   mounted() {
-    fetch('http://localhost:3000/earth')
+    fetch('https://slickslices-gatsby.s3.us-west-2.amazonaws.com/data.json/earth')
       .then(res => res.json())
       .then(data => this.earthData = data)
       .catch(err => console.log(err.message))
