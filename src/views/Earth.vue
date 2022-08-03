@@ -14,15 +14,15 @@
       <div class="planet__content">
         <div class="planet__content-grid">
           <div class="planet__content-info">
-            <h1>{{ earthData.name }}</h1>
+            <h1>EARTH</h1>
             <div class="planet__content-info" v-if="overviewActive">
-              <p>{{ earthData.overview.content }}</p>
+              <p>Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth's surface is land with remaining 70.8% is covered with water. Earth's distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.</p>
             </div>
             <div class="planet__content-info" v-if="internalActive">
-              <p>{{ earthData.structure.content }}</p>
+              <p>Earth's interior, like that of the other terrestrial planets, is divided into layers by their chemical or physical (rheological) properties. The outer layer is a chemically distinct silicate solid crust, which is underlain by a highly viscous solid mantle.</p>
             </div>
             <div class="planet__content-info" v-if="gioActive">
-              <p>{{ earthData.geology.content }}</p>
+              <p>The total surface area of Earth is about 510 million km2. The continental crust consists of lower density material such as the igneous rocks granite and andesite. Less common is basalt, a denser volcanic rock that is the primary constituent of the ocean floors.</p>
             </div>
             <div class="planet__source">
               source: <a :href="earthData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
@@ -39,19 +39,19 @@
     <div class="planet__specs">
       <div class="planet__specs-card">
         <div>ROTATION TIME</div>
-        <span>{{ earthData.rotation }}</span>
+        <span>0.99 DAYS</span>
       </div>
       <div class="planet__specs-card">
         <div>REVOLUTION TIME</div>
-        <span>{{ earthData.revolution }}</span>
+        <span>365.26 DAYS</span>
       </div>
       <div class="planet__specs-card">
         <div>radius</div>
-        <span>{{ earthData.radius }}</span>
+        <span>6,371 KM</span>
       </div>
       <div class="planet__specs-card">
         <div>AVERAGE TEMP.</div>
-        <span>{{ earthData.temperature }}</span>
+        <span>16°C</span>
       </div>
     </div>
   </div>
@@ -95,7 +95,7 @@ export default {
     }
   },
   mounted() {
-    fetch('https://slickslices-gatsby.s3.us-west-2.amazonaws.com/data.json/earth')
+    fetch('http://localhost:3000/earth')
       .then(res => res.json())
       .then(data => this.earthData = data)
       .catch(err => console.log(err.message))
