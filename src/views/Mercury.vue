@@ -1,5 +1,5 @@
 <template>
-  <div v-if="mercuryData" class="planet mercury">
+  <div class="planet mercury">
     <div class="planet__mobileSpecBtns">
       <a @click="overviewToggle" :class="[overviewActive ? 'active' : '']">Overview</a>
       <a @click="internalToggle" :class="[internalActive ? 'active' : '']">Structure</a>
@@ -14,18 +14,18 @@
       <div class="planet__content">
         <div class="planet__content-grid">
           <div class="planet__content-info">
-            <h1>{{ mercuryData.name }}</h1>
+            <h1>{{planetInfo['Mercury'].name}}</h1>
             <div class="planet__content-info" v-if="overviewActive">
-              <p>{{ mercuryData.overview.content }}</p>
+              <p>{{planetInfo['Mercury'].overview.content}}</p>
             </div>
             <div class="planet__content-info" v-if="internalActive">
-              <p>{{ mercuryData.structure.content }}</p>
+              <p>{{planetInfo['Mercury'].structure.content}}</p>
             </div>
             <div class="planet__content-info" v-if="gioActive">
-              <p>{{ mercuryData.geology.content }}</p>
+              <p>{{planetInfo['Mercury'].geology.content}}</p>
             </div>
             <div class="planet__source">
-              source: <a :href="mercuryData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
+              source: <a :href="planetInfo['Mercury'].source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
             </div>
           </div>
           <div class="planet__specBtns">
@@ -39,19 +39,19 @@
     <div class="planet__specs">
       <div class="planet__specs-card">
         <div>ROTATION TIME</div>
-        <span>{{ mercuryData.rotation }}</span>
+        <span>{{planetInfo['Mercury'].rotation}}</span>
       </div>
       <div class="planet__specs-card">
         <div>REVOLUTION TIME</div>
-        <span>{{ mercuryData.revolution }}</span>
+        <span>{{planetInfo['Mercury'].revolution}}</span>
       </div>
       <div class="planet__specs-card">
         <div>radius</div>
-        <span>{{ mercuryData.radius }}</span>
+        <span>{{planetInfo['Mercury'].radius}}</span>
       </div>
       <div class="planet__specs-card">
         <div>AVERAGE TEMP.</div>
-        <span>{{ mercuryData.temperature }}</span>
+        <span>{{planetInfo['Mercury'].temperature}}</span>
       </div>
     </div>
   </div>
@@ -63,11 +63,12 @@ import internalImg from "../assets/images/planet-mercury-internal.svg"
 import gioImg from "../assets/images/geology-mercury.png"
 import planetImg from '../assets/images/planet-mercury.svg'
 import sourceIcon from '../assets/images/icon-source.svg'
+import planetInfo from '../assets/data/data.json'
 
 export default {
   data() {
     return {
-      mercuryData: null,
+      planetInfo,
       internalImg,
       gioImg,
       planetImg,
@@ -94,12 +95,6 @@ export default {
       this.gioActive = true;
     }
   },
-  mounted() {
-    fetch('http://localhost:3000/mercury')
-      .then(res => res.json())
-      .then(data => this.mercuryData = data)
-      .catch(err => console.log(err.message))
-  }
 }
 </script>
 

@@ -43,7 +43,7 @@
       </div>
       <div class="planet__specs-card">
         <div>REVOLUTION TIME</div>
-        <span>{{planetInfo['Earth'].rotation}}</span>
+        <span>{{planetInfo['Earth'].revolution}}</span>
       </div>
       <div class="planet__specs-card">
         <div>radius</div>

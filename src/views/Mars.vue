@@ -1,5 +1,5 @@
 <template>
-  <div v-if="marsData" class="planet mars">
+  <div class="planet mars">
     <div class="planet__mobileSpecBtns">
       <a @click="overviewToggle" :class="[overviewActive ? 'active' : '']">Overview</a>
       <a @click="internalToggle" :class="[internalActive ? 'active' : '']">Structure</a>
@@ -14,18 +14,18 @@
       <div class="planet__content">
         <div class="planet__content-grid">
           <div class="planet__content-info">
-            <h1>{{ marsData.name }}</h1>
+            <h1>{{planetInfo['Mars'].name}}</h1>
             <div class="planet__content-info" v-if="overviewActive">
-              <p>{{ marsData.overview.content }}</p>
+              <p>{{planetInfo['Mars'].overview.content}}</p>
             </div>
             <div class="planet__content-info" v-if="internalActive">
-              <p>{{ marsData.structure.content }}</p>
+              <p>{{planetInfo['Mars'].structure.content}}</p>
             </div>
             <div class="planet__content-info" v-if="gioActive">
-              <p>{{ marsData.geology.content }}</p>
+              <p>{{planetInfo['Mars'].geology.content}}</p>
             </div>
             <div class="planet__source">
-              source: <a :href="marsData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
+              source: <a :href="planetInfo['Mars'].source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
             </div>
           </div>
           <div class="planet__specBtns">
@@ -39,19 +39,19 @@
     <div class="planet__specs">
       <div class="planet__specs-card">
         <div>ROTATION TIME</div>
-        <span>{{ marsData.rotation }}</span>
+        <span>{{planetInfo['Mars'].rotation}}</span>
       </div>
       <div class="planet__specs-card">
         <div>REVOLUTION TIME</div>
-        <span>{{ marsData.revolution }}</span>
+        <span>{{planetInfo['Mars'].revolution}}</span>
       </div>
       <div class="planet__specs-card">
         <div>radius</div>
-        <span>{{ marsData.radius }}</span>
+        <span>{{planetInfo['Mars'].radius}}</span>
       </div>
       <div class="planet__specs-card">
         <div>AVERAGE TEMP.</div>
-        <span>{{ marsData.temperature }}</span>
+        <span>{{planetInfo['Mars'].temperature}}</span>
       </div>
     </div>
   </div>
@@ -63,11 +63,12 @@ import internalImg from "../assets/images/planet-mars-internal.svg"
 import gioImg from "../assets/images/geology-mars.png"
 import planetImg from '../assets/images/planet-mars.svg'
 import sourceIcon from '../assets/images/icon-source.svg'
+import planetInfo from '../assets/data/data.json';
 
 export default {
   data() {
     return {
-      marsData: null,
+      planetInfo,
       internalImg,
       gioImg,
       planetImg,
@@ -94,12 +95,6 @@ export default {
       this.gioActive = true;
     }
   },
-  mounted() {
-    fetch('http://localhost:3000/mars')
-      .then(res => res.json())
-      .then(data => this.marsData = data)
-      .catch(err => console.log(err.message))
-  }
 }
 </script>
 

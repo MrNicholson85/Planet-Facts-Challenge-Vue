@@ -1,5 +1,5 @@
 <template>
-  <div v-if="neptuneData" class="planet neptune">
+   <div class="planet neptune">
     <div class="planet__mobileSpecBtns">
       <a @click="overviewToggle" :class="[overviewActive ? 'active' : '']">Overview</a>
       <a @click="internalToggle" :class="[internalActive ? 'active' : '']">Structure</a>
@@ -14,18 +14,18 @@
       <div class="planet__content">
         <div class="planet__content-grid">
           <div class="planet__content-info">
-            <h1>{{ neptuneData.name }}</h1>
+            <h1>{{planetInfo['Neptune'].name}}</h1>
             <div class="planet__content-info" v-if="overviewActive">
-              <p>{{ neptuneData.overview.content }}</p>
+              <p>{{planetInfo['Neptune'].overview.content}}</p>
             </div>
             <div class="planet__content-info" v-if="internalActive">
-              <p>{{ neptuneData.structure.content }}</p>
+              <p>{{planetInfo['Neptune'].structure.content}}</p>
             </div>
             <div class="planet__content-info" v-if="gioActive">
-              <p>{{ neptuneData.geology.content }}</p>
+              <p>{{planetInfo['Neptune'].geology.content}}</p>
             </div>
             <div class="planet__source">
-              source: <a :href="neptuneData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
+              source: <a :href="planetInfo['Neptune'].source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
             </div>
           </div>
           <div class="planet__specBtns">
@@ -39,19 +39,19 @@
     <div class="planet__specs">
       <div class="planet__specs-card">
         <div>ROTATION TIME</div>
-        <span>{{ neptuneData.rotation }}</span>
+        <span>{{planetInfo['Neptune'].rotation}}</span>
       </div>
       <div class="planet__specs-card">
         <div>REVOLUTION TIME</div>
-        <span>{{ neptuneData.revolution }}</span>
+        <span>{{planetInfo['Neptune'].revolution}}</span>
       </div>
       <div class="planet__specs-card">
         <div>radius</div>
-        <span>{{ neptuneData.radius }}</span>
+        <span>{{planetInfo['Neptune'].radius}}</span>
       </div>
       <div class="planet__specs-card">
         <div>AVERAGE TEMP.</div>
-        <span>{{ neptuneData.temperature }}</span>
+        <span>{{planetInfo['Neptune'].temperature}}</span>
       </div>
     </div>
   </div>
@@ -63,11 +63,12 @@ import internalImg from "../assets/images/planet-neptune-internal.svg"
 import gioImg from "../assets/images/geology-neptune.png"
 import planetImg from '../assets/images/planet-neptune.svg'
 import sourceIcon from '../assets/images/icon-source.svg'
+import planetInfo from '../assets/data/data.json'
 
 export default {
   data() {
     return {
-      neptuneData: null,
+      planetInfo,
       internalImg,
       gioImg,
       planetImg,
@@ -94,12 +95,6 @@ export default {
       this.gioActive = true;
     }
   },
-  mounted() {
-    fetch('http://localhost:3000/neptune')
-      .then(res => res.json())
-      .then(data => this.neptuneData = data)
-      .catch(err => console.log(err.message))
-  }
 }
 </script>
 
