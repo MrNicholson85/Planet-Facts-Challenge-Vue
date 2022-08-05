@@ -39,19 +39,19 @@
     <div class="planet__specs">
       <div class="planet__specs-card">
         <div>ROTATION TIME</div>
-        <span>0.99 DAYS</span>
+        <span>{{planetInfo['Earth'].rotation}}</span>
       </div>
       <div class="planet__specs-card">
         <div>REVOLUTION TIME</div>
-        <span>365.26 DAYS</span>
+        <span>{{planetInfo['Earth'].rotation}}</span>
       </div>
       <div class="planet__specs-card">
         <div>radius</div>
-        <span>6,371 KM</span>
+        <span>{{planetInfo['Earth'].radius}}</span>
       </div>
       <div class="planet__specs-card">
         <div>AVERAGE TEMP.</div>
-        <span>16°C</span>
+        <span>{{planetInfo['Earth'].temperature}}</span>
       </div>
     </div>
   </div>
