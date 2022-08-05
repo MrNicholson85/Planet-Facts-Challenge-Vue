@@ -12,7 +12,7 @@ import FourOhFour from '../views/fourohfour.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/Mercury',
     name: 'Mercury',
     component: Mercury
   },
@@ -22,7 +22,7 @@ const routes = [
     component: Venus
   },
   {
-    path: '/Earth',
+    path: '/',
     name: 'Earth',
     component: Earth
   },
