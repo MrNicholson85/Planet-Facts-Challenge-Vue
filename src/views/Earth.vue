@@ -1,5 +1,5 @@
 <template>
-  <div v-if="earthData" class="planet earth">
+  <div class="planet earth">
     <div class="planet__mobileSpecBtns">
       <a @click="overviewToggle" :class="[overviewActive ? 'active' : '']">Overview</a>
       <a @click="internalToggle" :class="[internalActive ? 'active' : '']">Structure</a>
@@ -14,18 +14,18 @@
       <div class="planet__content">
         <div class="planet__content-grid">
           <div class="planet__content-info">
-            <h1>EARTH</h1>
+            <h1>{{planetInfo['Earth'].name}}</h1>
             <div class="planet__content-info" v-if="overviewActive">
-              <p>Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth's surface is land with remaining 70.8% is covered with water. Earth's distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.</p>
+              <p>{{planetInfo['Earth'].overview.content}}</p>
             </div>
             <div class="planet__content-info" v-if="internalActive">
-              <p>Earth's interior, like that of the other terrestrial planets, is divided into layers by their chemical or physical (rheological) properties. The outer layer is a chemically distinct silicate solid crust, which is underlain by a highly viscous solid mantle.</p>
+              <p>{{planetInfo['Earth'].structure.content}}</p>
             </div>
             <div class="planet__content-info" v-if="gioActive">
-              <p>The total surface area of Earth is about 510 million km2. The continental crust consists of lower density material such as the igneous rocks granite and andesite. Less common is basalt, a denser volcanic rock that is the primary constituent of the ocean floors.</p>
+              <p>{{planetInfo['Earth'].geology.content}}</p>
             </div>
             <div class="planet__source">
-              source: <a :href="earthData.geology.source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
+              source: <a :href="planetInfo['Earth'].source" target="_blank">Wikipedia <img :src="sourceIcon"></a>
             </div>
           </div>
           <div class="planet__specBtns">
@@ -63,11 +63,11 @@ import internalImg from "../assets/images/planet-earth-internal.svg"
 import gioImg from "../assets/images/geology-earth.png"
 import planetImg from '../assets/images/planet-earth.svg'
 import sourceIcon from '../assets/images/icon-source.svg'
+import planetInfo from '../assets/data/data.json';
 
 export default {
   data() {
     return {
-      earthData: null,
       internalImg,
       gioImg,
       planetImg,
@@ -75,6 +75,7 @@ export default {
       overviewActive: true,
       internalActive: false,
       gioActive: false,
+      planetInfo,
     }
   },
   methods: {
@@ -94,11 +95,9 @@ export default {
       this.gioActive = true;
     }
   },
-  mounted() {
-    fetch('http://localhost:3000/earth')
-      .then(res => res.json())
-      .then(data => this.earthData = data)
-      .catch(err => console.log(err.message))
+  computed: {
+    console: () => console,
+    window: () => window,
   }
 }
 </script>
